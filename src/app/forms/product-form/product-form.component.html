@@ -1,1 +1,93 @@
-<p>product-form works!</p>
+<div class="container mt-5">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="form-title">Part Details</h4>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="partModel">Part Model #</label>
+            <input type="text" id="partModel" class="form-control" formControlName="partModel" placeholder="Part Model #">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="partName">Part Name</label>
+            <input type="text" id="partName" class="form-control" formControlName="partName" placeholder="Part Name">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="category">Category *</label>
+            <select id="category" class="form-control" formControlName="category" (change)="onCategoryChange()">
+              <option value="" disabled>Select Category</option>
+              <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="subcategory">Subcategory *</label>
+            <select id="subcategory" class="form-control" formControlName="subcategory">
+              <option value="" disabled>Select Subcategory</option>
+              <option *ngFor="let sub of subcategories" [value]="sub">{{ sub }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="brand">Brand *</label>
+            <select id="brand" class="form-control" formControlName="brand">
+              <option value="" disabled>Select Brand</option>
+              <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="hsnCode">HSN Code *</label>
+            <select id="hsnCode" class="form-control" formControlName="hsnCode">
+              <option value="" disabled>Select HSN Code</option>
+              <option *ngFor="let code of hsnCodes" [value]="code">{{ code }}</option>
+            </select>
+          </div>
+        </div>
+
+        <h4 class="form-title">Cost Details</h4>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="costPrice">Cost Price</label>
+            <input type="number" id="costPrice" class="form-control" formControlName="costPrice" placeholder="Cost Price">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="mrp">Maximum Retail Price</label>
+            <input type="number" id="mrp" class="form-control" formControlName="mrp" placeholder="Maximum Retail Price">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="discount">Fixed Discount</label>
+            <input type="number" id="discount" class="form-control" formControlName="discount" placeholder="Fixed Discount">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="sellingPrice">Selling Price</label>
+            <input type="number" id="sellingPrice" class="form-control" formControlName="sellingPrice" placeholder="Selling Price">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="partUsedFor">Part Used For *</label>
+          <select id="partUsedFor" class="form-control" formControlName="partUsedFor">
+            <option value="" disabled>Select Part Used For</option>
+            <option *ngFor="let use of partUsedForOptions" [value]="use">{{ use }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Rich Text Description</label>
+          <textarea id="description" class="form-control rich-text" formControlName="description" placeholder="Write Here..." rows="5"></textarea>
+        </div>
+      </div>
+
+      <div class="card-footer text-right">
+        <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Submit</button>
+        <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
+      </div>
+    </div>
+  </form>
+</div>
+
