@@ -1,6 +1,6 @@
 export class ProductFormComponent implements OnInit {
   productForm: FormGroup;
-  categories = ['Washing Machine', 'AC' , 'Water Purifier' , 'Kiosk' , 'Refrigerator' , 'Microwave/Owen' , 'Chimney' , 'Television' , 'Geyser' , 'Dishwasher' , 'Cooler' , 'Speaker' , 'Flour Mill' , 'Fan' , 'Dehumidifier' , 'Health Care Device' , 'Kitchen' , 'Induction' , 'Commercial Cooler' , 'Personal Cooler', 'Residential Cooler' , 'Camera' , 'Interactive Panel' , 'Home Improvement' , 'Water Dispensor' , 'Vaccum Cleaner' , 'Sports & Fitness' , 'Printer' , 'Mobile' , 'Laptop' , 'Home' , 'Lifestyle'];
+  categories = ['Washing Machine', 'AC' , 'Water Purifier' , 'Kiosk' , 'Refrigerator' , 'Microwave/Owen' , 'Chimney' , 'Television' , 'Geyser' , 'Dishwasher' , 'Cooler' , 'Speaker' , 'Flour Mill' , 'Fan' , 'Dehumidifier'];
   subcategories: string[] = [];
   brands = ['Whirlpool', 'Samsung', 'LG', 'Godrej'];
   hsnCodes = ['5%', '8%', '12%', '18%'];
