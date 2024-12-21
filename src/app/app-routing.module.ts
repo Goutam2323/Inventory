@@ -4,6 +4,11 @@ import { ProductFormComponent } from './forms/product-form/product-form.componen
 
 const routes: Routes = [
   { path: 'product-form', component: ProductFormComponent },
+  {
+    path: 'sign-in',
+    loadChildren: () =>
+      import('./sign-in/sign-in.module').then((m) => m.SignInModule),
+  },
 ];
 
 @NgModule({
