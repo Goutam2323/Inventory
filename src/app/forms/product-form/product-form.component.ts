@@ -54,7 +54,7 @@ export class ProductFormComponent implements OnInit {
       partUsedFor: ['', Validators.required],
       launchYear: ['', Validators.required],
       isReturnable: ['', Validators.required],
-      avatar: ['', Validators.required],
+      avatar: [''],
     });
   }
 
