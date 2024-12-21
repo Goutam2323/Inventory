@@ -83,6 +83,15 @@ textarea.form-control {
   padding-top: 15px;
   resize: none;
 }
+.is-invalid {
+  border: 1px solid red;
+}
+
+.text-danger {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
 
 .btn {
   padding: 0.657rem 0.75rem;
