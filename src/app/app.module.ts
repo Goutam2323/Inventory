@@ -7,7 +7,7 @@ import { ProductComponent } from './dashboard/component/product/product.componen
 
 @NgModule({
   declarations: [AppComponent, ProductComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule,ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
