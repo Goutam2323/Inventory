@@ -14,8 +14,17 @@
                 id="partModel"
                 class="form-control"
                 formControlName="partModel"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('partModel')?.invalid
+                }"
                 placeholder="Part Model #"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('partModel')?.invalid"
+                class="text-danger"
+              >
+                Part Model is Required.
+              </small>
             </div>
           </div>
           <div class="col-md-6">
@@ -26,8 +35,17 @@
                 id="partName"
                 class="form-control"
                 formControlName="partName"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('partName')?.invalid
+                }"
                 placeholder="Part Name"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('partModel')?.invalid"
+                class="text-danger"
+              >
+                Part Name is Required.
+              </small>
             </div>
           </div>
           <div class="col-md-6">
@@ -54,12 +72,21 @@
                 class="form-control"
                 formControlName="category"
                 (change)="onCategoryChange()"
+                 [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('category')?.invalid
+                }"
               >
                 <option value="" disabled>Select Category</option>
                 <option *ngFor="let category of categories" [value]="category">
                   {{ category }}
                 </option>
               </select>
+               <small
+                *ngIf="formSubmitted && productForm.get('category')?.invalid"
+                class="text-danger"
+              >
+                Category is required.
+              </small>
             </div>
           </div>
           <div class="col-md-6">
@@ -69,12 +96,21 @@
                 id="subcategory"
                 class="form-control"
                 formControlName="subcategory"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('subcategory')?.invalid
+                }"
               >
                 <option value="" disabled>Select Subcategory</option>
                 <option *ngFor="let sub of subcategories" [value]="sub">
                   {{ sub }}
                 </option>
               </select>
+              <small
+                *ngIf="formSubmitted && productForm.get('subcategory')?.invalid"
+                class="text-danger"
+              >
+                Subcategory is required.
+              </small>
             </div>
           </div>
         </div>
@@ -84,12 +120,20 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="brand">Brand *</label>
-              <select id="brand" class="form-control" formControlName="brand">
+              <select id="brand" class="form-control" formControlName="brand" [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('brand')?.invalid
+                }">
                 <option value="" disabled>Select Brand</option>
                 <option *ngFor="let brand of brands" [value]="brand">
                   {{ brand }}
                 </option>
               </select>
+               <small
+                *ngIf="formSubmitted && productForm.get('brand')?.invalid"
+                class="text-danger"
+              >
+                Brand is required.
+              </small>
             </div>
           </div>
           <div class="col-md-6">
@@ -99,12 +143,21 @@
                 id="hsnCode"
                 class="form-control"
                 formControlName="hsnCode"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('hsnCode')?.invalid
+                }"
               >
                 <option value="" disabled>Select HSN Code</option>
                 <option *ngFor="let code of hsnCodes" [value]="code">
                   {{ code }}
                 </option>
               </select>
+              <small
+                *ngIf="formSubmitted && productForm.get('hsnCode')?.invalid"
+                class="text-danger"
+              >
+                HSN Code is required.
+              </small>
             </div>
           </div>
         </div>
@@ -121,8 +174,17 @@
                 id="costPrice"
                 class="form-control"
                 formControlName="costPrice"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('costPrice')?.invalid
+                }"
                 placeholder="Cost Price"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('costPrice')?.invalid"
+                class="text-danger"
+              >
+                  Cost Price is required.
+              </small>
             </div>
           </div>
           <div class="col-md-3">
@@ -133,8 +195,17 @@
                 id="mrp"
                 class="form-control"
                 formControlName="mrp"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('mrp')?.invalid
+                }"
                 placeholder="Maximum Retail Price"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('mrp')?.invalid"
+                class="text-danger"
+              >
+                MRP is required.
+              </small>
             </div>
           </div>
           <div class="col-md-3">
@@ -145,8 +216,17 @@
                 id="discount"
                 class="form-control"
                 formControlName="discount"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('discount')?.invalid
+                }"
                 placeholder="Fixed Discount"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('discount')?.invalid"
+                class="text-danger"
+              >
+                Discount is required.
+              </small>
             </div>
           </div>
           <div class="col-md-3">
@@ -157,8 +237,17 @@
                 id="sellingPrice"
                 class="form-control"
                 formControlName="sellingPrice"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('sellingPrice')?.invalid
+                }"
                 placeholder="Selling Price"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('hsnCode')?.invalid"
+                class="text-danger"
+              >
+                Selling Price is required.
+              </small>
             </div>
           </div>
         </div>
@@ -171,8 +260,17 @@
                 id="warrantyPeriod"
                 class="form-control"
                 formControlName="warrantyPeriod"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('warrantyPeriod')?.invalid
+                }"
                 placeholder="Warranty Period"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('warrantyPeriod')?.invalid"
+                class="text-danger"
+              >
+                Warranty Period is required.
+              </small>
             </div>
           </div>
           <div class="col-md-3">
@@ -183,8 +281,17 @@
                 id="launchYear"
                 class="form-control"
                 formControlName="launchYear"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('launchYear')?.invalid
+                }"
                 placeholder="launchYear"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('launchYear')?.invalid"
+                class="text-danger"
+              >
+                Launch year  is required.
+              </small>
             </div>
           </div>
           <div class="col-md-3">
@@ -194,11 +301,20 @@
                 id="isReturnable"
                 class="form-control"
                 formControlName="isReturnable"
+                 [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('isReturnable')?.invalid
+                }"
               >
                 <option value="" disabled>Select Returnable Option</option>
                 <option [value]="true">yes</option>
                 <option [value]="false">no</option>
               </select>
+              <small
+                *ngIf="formSubmitted && productForm.get('isReturnable')?.invalid"
+                class="text-danger"
+              >
+                Is Returnable is required.
+              </small>
             </div>
           </div>
           <div class="col-md-3">
@@ -208,11 +324,21 @@
                 id="partUsedFor"
                 class="form-control"
                 formControlName="partUsedFor"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('partUsedFor')?.invalid
+                }"
+
               >
                 <option value="" disabled>Part Used For</option>
                 <option value="Serviz">Serviz</option>
                 <option value="Brand">Brand</option>
               </select>
+              <small
+                *ngIf="formSubmitted && productForm.get('partUsedFor')?.invalid"
+                class="text-danger"
+              >
+                Parts Usage is required.
+              </small>
             </div>
           </div>
         </div>
@@ -227,8 +353,17 @@
                 id="minStockUnit"
                 class="form-control"
                 formControlName="minStockUnit"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('minStockUnit')?.invalid
+                }"
                 placeholder="Min Stock Unit"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('minStockUnit')?.invalid"
+                class="text-danger"
+              >
+                Minimum Stock Unit is required.
+              </small>
             </div>
           </div>
           <div class="col-md-4">
@@ -239,8 +374,17 @@
                 id="minOrderUnit"
                 class="form-control"
                 formControlName="minOrderUnit"
+                 [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('minOrderUnit')?.invalid
+                }"
                 placeholder="Min Order Unit"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('minOrderUnit')?.invalid"
+                class="text-danger"
+              >
+                Minimum Order Unit is required.
+              </small>
             </div>
           </div>
           <div class="col-md-4">
@@ -251,21 +395,39 @@
                 id="maxOrderUnit"
                 class="form-control"
                 formControlName="maxOrderUnit"
+                 [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('maxOrderUnit')?.invalid
+                }"
                 placeholder="Max Order Unit"
               />
+              <small
+                *ngIf="formSubmitted && productForm.get('maxOrderUnit')?.invalid"
+                class="text-danger"
+              >
+                Maximum Order Unit is required.
+              </small>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label> Text Description</label>
+              <label for="textArea"> Text Description</label>
               <textarea
                 id=" richTextDescription"
                 class="form-control"
                 name=" richTextDescription"
+                [ngClass]="{
+                  'is-invalid': formSubmitted && productForm.get('textArea')?.invalid
+                }"
                 placeholder="Enter your comment here..."
               ></textarea>
+              <small
+                *ngIf="formSubmitted && productForm.get('textArea')?.invalid"
+                class="text-danger"
+              >
+                HSN Code is required.
+              </small>
             </div>
           </div>
         </div>
