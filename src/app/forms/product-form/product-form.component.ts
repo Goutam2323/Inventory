@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductFormService } from './product-form.service';
+
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -14,7 +15,7 @@ export class ProductFormComponent implements OnInit {
     'Water Purifier',
     'Kiosk',
     'Refrigerator',
-    'Microwave/Owen',
+    'Microwave/Oven',
     'Chimney',
     'Television',
     'Geyser',
@@ -28,6 +29,8 @@ export class ProductFormComponent implements OnInit {
   subcategories: string[] = [];
   brands = ['Whirlpool', 'Samsung', 'LG', 'Godrej'];
   hsnCodes = ['5%', '8%', '12%', '18%'];
+
+  submitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -46,16 +49,19 @@ export class ProductFormComponent implements OnInit {
       mrp: ['', [Validators.required, Validators.min(0)]],
       discount: ['', [Validators.required, Validators.min(0)]],
       sellingPrice: ['', [Validators.required, Validators.min(0)]],
-
       warrantyPeriod: ['', [Validators.required, Validators.min(0)]],
       minStockUnit: ['', [Validators.required, Validators.min(0)]],
       minOrderUnit: ['', [Validators.required, Validators.min(0)]],
       maxOrderUnit: ['', [Validators.required, Validators.min(0)]],
       partUsedFor: ['', Validators.required],
-      launchYear: ['', Validators.required],
+      launchYear: ['', [Validators.required, Validators.pattern('^[0-9]{4}$')]], // Year validation
       isReturnable: ['', Validators.required],
-      avatar: [''],
+      avatar: [''], // No validation for avatar
     });
+  }
+
+  get f() {
+    return this.productForm.controls;
   }
 
   onCategoryChange(): void {
@@ -73,39 +79,7 @@ export class ProductFormComponent implements OnInit {
       case 'Water Purifier':
         this.subcategories = ['RO', 'UV'];
         break;
-      case 'Kiosk':
-        this.subcategories = ['Kiosk'];
-        break;
-      case 'Microwave/Owen':
-        this.subcategories = ['Microwave', 'Oven'];
-        break;
-      case 'Chimney':
-        this.subcategories = ['Chimney'];
-        break;
-      case 'Television':
-        this.subcategories = ['LED', 'LCD'];
-        break;
-      case 'Geyser':
-        this.subcategories = ['Electric', 'Gas'];
-        break;
-      case 'Dishwasher':
-        this.subcategories = ['Dishwasher'];
-        break;
-      case 'Cooler':
-        this.subcategories = ['Personal', 'Commercial'];
-        break;
-      case 'Speaker':
-        this.subcategories = ['Speaker'];
-        break;
-      case 'Flour Mill':
-        this.subcategories = ['Flour Mill'];
-        break;
-      case 'Fan':
-        this.subcategories = ['Fan'];
-        break;
-      case 'Dehumidifier':
-        this.subcategories = ['Dehumidifier'];
-        break;
+      // Add more categories as needed
       default:
         this.subcategories = [];
         break;
@@ -113,22 +87,30 @@ export class ProductFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.productForm.valid) {
-      this.productFormService.sendData(this.productForm.value).subscribe(
-        (response) => {
-          console.log('Data sent successfully:', response);
-        },
-        (error) => {
-          console.error('Error sending data:', error);
-        }
+    this.submitted = true;
+
+    if (this.productForm.invalid) {
+      const firstInvalidField = Object.keys(this.productForm.controls).find(
+        (key) => this.productForm.controls[key].invalid
       );
-    } else {
-      alert('form not submitted');
+      const element = document.querySelector(`[formControlName="${firstInvalidField}"]`);
+      element?.scrollIntoView({ behavior: 'smooth' });
+      return;
     }
+
+    this.productFormService.sendData(this.productForm.value).subscribe(
+      (response) => {
+        console.log('Data sent successfully:', response);
+      },
+      (error) => {
+        console.error('Error sending data:', error);
+      }
+    );
   }
 
   onReset(): void {
     this.productForm.reset();
     this.subcategories = [];
+    this.submitted = false;
   }
 }
