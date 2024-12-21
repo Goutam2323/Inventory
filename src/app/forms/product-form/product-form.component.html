@@ -1,0 +1,287 @@
+<div class="container mt-5">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="form-title">Part Details</h4>
+
+        <!-- First Row: Part Model and Part Name -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="partModel">Part Model #</label>
+              <input
+                type="text"
+                id="partModel"
+                class="form-control"
+                formControlName="partModel"
+                placeholder="Part Model #"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="partName">Part Name</label>
+              <input
+                type="text"
+                id="partName"
+                class="form-control"
+                formControlName="partName"
+                placeholder="Part Name"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="partName">avatar</label>
+              <input
+                type="text"
+                id="avtar"
+                class="form-control"
+                formControlName="avatar"
+                placeholder="avatar"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Row: Category and Subcategory -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="category">Category *</label>
+              <select
+                id="category"
+                class="form-control"
+                formControlName="category"
+                (change)="onCategoryChange()"
+              >
+                <option value="" disabled>Select Category</option>
+                <option *ngFor="let category of categories" [value]="category">
+                  {{ category }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="subcategory">Subcategory *</label>
+              <select
+                id="subcategory"
+                class="form-control"
+                formControlName="subcategory"
+              >
+                <option value="" disabled>Select Subcategory</option>
+                <option *ngFor="let sub of subcategories" [value]="sub">
+                  {{ sub }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Third Row: Brand and HSN Code -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="brand">Brand *</label>
+              <select id="brand" class="form-control" formControlName="brand">
+                <option value="" disabled>Select Brand</option>
+                <option *ngFor="let brand of brands" [value]="brand">
+                  {{ brand }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="hsnCode">HSN Code *</label>
+              <select
+                id="hsnCode"
+                class="form-control"
+                formControlName="hsnCode"
+              >
+                <option value="" disabled>Select HSN Code</option>
+                <option *ngFor="let code of hsnCodes" [value]="code">
+                  {{ code }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <h4 class="form-title">Cost Details</h4>
+
+        <!-- Fourth Row: Cost Price, MRP, Discount, Selling Price -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="costPrice">Cost Price</label>
+              <input
+                type="number"
+                id="costPrice"
+                class="form-control"
+                formControlName="costPrice"
+                placeholder="Cost Price"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="mrp">Maximum Retail Price</label>
+              <input
+                type="number"
+                id="mrp"
+                class="form-control"
+                formControlName="mrp"
+                placeholder="Maximum Retail Price"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="discount">Fixed Discount</label>
+              <input
+                type="number"
+                id="discount"
+                class="form-control"
+                formControlName="discount"
+                placeholder="Fixed Discount"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="sellingPrice">Selling Price</label>
+              <input
+                type="number"
+                id="sellingPrice"
+                class="form-control"
+                formControlName="sellingPrice"
+                placeholder="Selling Price"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="warrantyPeriod">Warranty Period</label>
+              <input
+                type="text"
+                id="warrantyPeriod"
+                class="form-control"
+                formControlName="warrantyPeriod"
+                placeholder="Warranty Period"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="launchYear">Launch Year</label>
+              <input
+                type="text"
+                id="launchYear"
+                class="form-control"
+                formControlName="launchYear"
+                placeholder="launchYear"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="isReturnable">Is Returnable *</label>
+              <select
+                id="isReturnable"
+                class="form-control"
+                formControlName="isReturnable"
+              >
+                <option value="" disabled>Select Returnable Option</option>
+                <option [value]="true">yes</option>
+                <option [value]="false">no</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="partUsedFor"> Part Used For</label>
+              <select
+                id="partUsedFor"
+                class="form-control"
+                formControlName="partUsedFor"
+              >
+                <option value="" disabled>Part Used For</option>
+                <option value="Serviz">Serviz</option>
+                <option value="Brand">Brand</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stock Units -->
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="minStockUnit">Min Stock Unit</label>
+              <input
+                type="number"
+                id="minStockUnit"
+                class="form-control"
+                formControlName="minStockUnit"
+                placeholder="Min Stock Unit"
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="minOrderUnit">Min Order Unit</label>
+              <input
+                type="number"
+                id="minOrderUnit"
+                class="form-control"
+                formControlName="minOrderUnit"
+                placeholder="Min Order Unit"
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="maxOrderUnit">Max Order Unit</label>
+              <input
+                type="number"
+                id="maxOrderUnit"
+                class="form-control"
+                formControlName="maxOrderUnit"
+                placeholder="Max Order Unit"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label> Text Description</label>
+              <textarea
+                id=" richTextDescription"
+                class="form-control"
+                name=" richTextDescription"
+                placeholder="Enter your comment here..."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-right">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          style="margin-right: 10px"
+        >
+          Submit
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="onReset()">
+          Reset
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -18,8 +18,10 @@ export class UserService {
   handleResponse(response: any) {
     console.log('User registered successfully', response);
     if (response.message === 'success') {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/product-form']);
       localStorage.setItem('userDetails', JSON.stringify(response.payload));
+      localStorage.setItem('accessToken', response.payload.token);
+      localStorage.setItem('refreshToken', response.payload.refreshToken);
     }
   }
   //method to handle the error
